@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winners - Dream Lottery 999</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #B71C1C;
+            --secondary: #D32F2F;
+            --accent: #FFD700;
+            --light: #F5F5F5;
+            --dark: #7B1C1C;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --text: #333333;
+            --white: #FFFFFF;
+            --gray: #757575;
+            --border: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light) 0%, #FFEBEE 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(183, 28, 28, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--secondary);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent), #FFC107);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Today's Winners Banner */
+        .todays-winners {
+            margin: 30px 0;
+        }
+        
+        .winner-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .winner-banner::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .winner-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .banner-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .banner-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+        
+        .banner-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .winner-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .winner-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .winner-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .winner-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        
+        .winner-card .prize-amount {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .winner-card .winning-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 8px 0;
+            color: var(--accent);
+        }
+        
+        .winner-card .winner-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .winner-card .winner-location {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        /* Previous Winners Section */
+        .previous-winners {
+            margin: 50px 0;
+        }
+        
+        .winners-table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: var(--white);
+        }
+        
+        .winners-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 700px;
+        }
+        
+        .winners-table th, .winners-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .winners-table th {
+            background: var(--primary);
+            font-weight: 600;
+            color: white;
+            position: sticky;
+            top: 0;
+            font-size: 0.9rem;
+        }
+        
+        .winners-table tr:hover {
+            background: rgba(211, 47, 47, 0.05);
+        }
+        
+        .winner-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .winner-initials {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+        
+        .winner-details {
+            flex-grow: 1;
+        }
+        
+        .winner-details p {
+            margin-bottom: 2px;
+        }
+        
+        .winner-details .winner-name-text {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        
+        .winner-details .winner-location {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .prize-cell {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+        
+        .lottery-cell {
+            background: var(--light);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+        
+        .winning-number-cell {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        .date-cell {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 25px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 12px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-header h2 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .auth-buttons {
+                margin-left: auto;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .winner-banner {
+                padding: 20px 15px;
+            }
+            
+            .winner-cards {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo-image {
+                height: 35px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .banner-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .winner-card .prize-amount {
+                font-size: 1.1rem;
+            }
+            
+            .winner-card .winning-number {
+                font-size: 1.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .winner-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://vectorseek.com/wp-content/uploads/2023/09/Dream-11-Icon-Logo-Vector.svg-.png" alt="Dream Lottery 999 Logo" class="logo-image">
+                    <div class="logo-text">
+                        <h1>Dream Lottery 999</h1>
+                        <span>India's Most Trusted Lottery</span>
+                    </div>
+                </div>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="lotteries.html">Lotteries</a></li>
+                        <li><a href="winners.html" class="active">Winners</a></li>
+                        <li><a href="buy-ticket.html">Buy Ticket</a></li>
+                        <li><a href="participants.html">Participants</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Congratulations to Our Winners!</h1>
+                <p>Meet the lucky players who changed their lives with Dream Lottery 999. Your turn could be next!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Winners Banner -->
+    <section class="todays-winners">
+        <div class="container">
+            <div class="winner-banner">
+                <div class="banner-header">
+                    <h2>Today's Big Winners</h2>
+                    <p>Latest lottery results announced on <span id="currentDate"></span></p>
+                </div>
+                
+                <div class="winner-cards">
+                    <!-- Mega Jackpot Winner -->
+                    <div class="winner-card">
+                        <h3>Mega Jackpot</h3>
+                        <div class="prize-amount">₹50,00,000</div>
+                        <div class="winning-number">DL-847</div>
+                        <div class="winner-name">Mr. Rajesh Kumar</div>
+                        <div class="winner-location">Mumbai, Maharashtra</div>
+                    </div>
+                    
+                    <!-- Super Lotto Winner -->
+                    <div class="winner-card">
+                        <h3>Super Lotto</h3>
+                        <div class="prize-amount">₹25,00,000</div>
+                        <div class="winning-number">DL-512</div>
+                        <div class="winner-name">Ms. Priya Sharma</div>
+                        <div class="winner-location">Delhi, NCR</div>
+                    </div>
+                    
+                    <!-- Quick Win Winner -->
+                    <div class="winner-card">
+                        <h3>Quick Win</h3>
+                        <div class="prize-amount">₹10,00,000</div>
+                        <div class="winning-number">DL-319</div>
+                        <div class="winner-name">Mr. Amit Patel</div>
+                        <div class="winner-location">Bangalore, Karnataka</div>
+                    </div>
+                    
+                    <!-- Lucky Draw Winner -->
+                    <div class="winner-card">
+                        <h3>Lucky Draw</h3>
+                        <div class="prize-amount">₹5,00,000</div>
+                        <div class="winning-number">DL-726</div>
+                        <div class="winner-name">Ms. Neha Singh</div>
+                        <div class="winner-location">Ahmedabad, Gujarat</div>
+                    </div>
+                    
+                    <!-- Mini Fortune Winner -->
+                    <div class="winner-card">
+                        <h3>Mini Fortune</h3>
+                        <div class="prize-amount">₹1,00,000</div>
+                        <div class="winning-number">DL-935</div>
+                        <div class="winner-name">Mr. Sanjay Verma</div>
+                        <div class="winner-location">Hyderabad, Telangana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous Winners Section -->
+    <section class="previous-winners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Previous Winners</h2>
+                <p>Our past winners who achieved their dreams with Dream Lottery 999</p>
+            </div>
+            
+            <div class="winners-table-container">
+                <table class="winners-table">
+                    <thead>
+                        <tr>
+                            <th>Winner</th>
+                            <th>Prize</th>
+                            <th>Lottery</th>
+                            <th>Winning Number</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previousWinnersTable">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Dream Lottery 999</h3>
+                    <p>India's most trusted and transparent lottery platform with millions of happy winners.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="lotteries.html">Lotteries</a></li>
+                        <li><a href="winners.html">Winners</a></li>
+                        <li><a href="buy-ticket.html">Buy Ticket</a></li>
+                        <li><a href="participants.html">Participants</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Lottery Street, Mumbai, India</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> support@dreamlottery999.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023-2025 Dream Lottery 999. All rights reserved. | This is a demo website. No real transactions are processed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get current date
+        function getCurrentDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return now.toLocaleDateString('en-US', options);
+        }
+        
+        // Get date in YYYY-MM-DD format
+        function getDateFormatted(dateString) {
+            const date = new Date(dateString);
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+        
+        // Get color based on lottery type
+        function getLotteryColor(lotteryType) {
+            switch(lotteryType) {
+                case 'Mega Jackpot':
+                    return '#D32F2F'; // Red
+                case 'Super Lotto':
+                    return '#1E88E5'; // Blue
+                case 'Quick Win':
+                    return '#43A047'; // Green
+                case 'Lucky Draw':
+                    return '#8E24AA'; // Purple
+                case 'Mini Fortune':
+                    return '#FB8C00'; // Orange
+                default:
+                    return '#757575'; // Gray
+            }
+        }
+        
+        // Previous winners data
+        const previousWinners = [
+            { 
+                name: 'Mr. Vikram Sharma', 
+                location: 'Pune, Maharashtra',
+                prize: '₹50,00,000', 
+                lottery: 'Mega Jackpot', 
+                winningNumber: 'DL-324', 
+                date: '2025-11-27',
+                initials: 'VS'
+            },
+            { 
+                name: 'Ms. Neha Patel', 
+                location: 'Ahmedabad, Gujarat',
+                prize: '₹25,00,000', 
+                lottery: 'Super Lotto', 
+                winningNumber: 'DL-876', 
+                date: '2025-11-26',
+                initials: 'NP'
+            },
+            { 
+                name: 'Mr. Sanjay Reddy', 
+                location: 'Hyderabad, Telangana',
+                prize: '₹10,00,000', 
+                lottery: 'Quick Win', 
+                winningNumber: 'DL-159', 
+                date: '2025-11-25',
+                initials: 'SR'
+            },
+            { 
+                name: 'Ms. Anita Desai', 
+                location: 'Chennai, Tamil Nadu',
+                prize: '₹5,00,000', 
+                lottery: 'Lucky Draw', 
+                winningNumber: 'DL-642', 
+                date: '2025-11-24',
+                initials: 'AD'
+            },
+            { 
+                name: 'Mr. Rohit Verma', 
+                location: 'Kolkata, West Bengal',
+                prize: '₹1,00,000', 
+                lottery: 'Mini Fortune', 
+                winningNumber: 'DL-753', 
+                date: '2025-11-23',
+                initials: 'RV'
+            },
+            { 
+                name: 'Ms. Pooja Mehta', 
+                location: 'Jaipur, Rajasthan',
+                prize: '₹50,00,000', 
+                lottery: 'Mega Jackpot', 
+                winningNumber: 'DL-918', 
+                date: '2025-11-22',
+                initials: 'PM'
+            },
+            { 
+                name: 'Mr. Arun Kumar', 
+                location: 'Lucknow, Uttar Pradesh',
+                prize: '₹25,00,000', 
+                lottery: 'Super Lotto', 
+                winningNumber: 'DL-267', 
+                date: '2025-11-21',
+                initials: 'AK'
+            },
+            { 
+                name: 'Ms. Sonia Kapoor', 
+                location: 'Chandigarh, Punjab',
+                prize: '₹10,00,000', 
+                lottery: 'Quick Win', 
+                winningNumber: 'DL-431', 
+                date: '2025-11-20',
+                initials: 'SK'
+            }
+        ];
+        
+        // Populate previous winners table
+        function populatePreviousWinnersTable() {
+            const tableBody = document.getElementById('previousWinnersTable');
+            tableBody.innerHTML = '';
+            
+            previousWinners.forEach(winner => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="winner-name">
+                            <div class="winner-initials" style="background-color: ${getLotteryColor(winner.lottery)}">
+                                ${winner.initials}
+                            </div>
+                            <div class="winner-details">
+                                <p class="winner-name-text">${winner.name}</p>
+                                <p class="winner-location">${winner.location}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="prize-cell">${winner.prize}</td>
+                    <td><span class="lottery-cell">${winner.lottery}</span></td>
+                    <td class="winning-number-cell">${winner.winningNumber}</td>
+                    <td class="date-cell">${getDateFormatted(winner.date)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+        
+        // Initialize
+        window.onload = function() {
+            // Set current date
+            document.getElementById('currentDate').textContent = getCurrentDate();
+            
+            // Populate previous winners table
+            populatePreviousWinnersTable();
+        };
+    </script>
+</body>
+</html>
